@@ -2,10 +2,7 @@ package com.hotstar.employee_management.models;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Component
@@ -18,7 +15,7 @@ public class Department {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     private List<Employee> employees;
 
     public Department() {

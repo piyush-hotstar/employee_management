@@ -5,14 +5,6 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-enum Designation {
-    P1,
-    P2,
-    P3,
-    P4,
-    P5
-}
-
 @Component
 @Entity
 public class Employee {
@@ -20,9 +12,10 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-//    @Column(unique = true)
+    @Column(unique = true)
     private String emailID;
 
     private LocalDate doj;
@@ -39,8 +32,8 @@ public class Employee {
 
     public Employee() {}
 
-    public Employee(String name, String emailID, LocalDate doj, Integer compensation, Designation designation, String manager,
-                    Department department
+    public Employee(String name, String emailID, LocalDate doj, Integer compensation, Designation designation, String manager
+                    , Department department
     ) {
         this.name = name;
         this.emailID = emailID;
@@ -132,7 +125,7 @@ public class Employee {
                 ", doj=" + doj +
                 ", compensation=" + compensation +
                 ", designation=" + designation +
-                ", department=" + department +
+                ", department=" + department.getName() +
                 ", manager='" + manager + '\'' +
                 ", lwd=" + lwd +
                 '}';
